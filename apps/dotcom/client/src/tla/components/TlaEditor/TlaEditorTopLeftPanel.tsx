@@ -55,6 +55,7 @@ import {
 	CookieConsentMenuItem,
 	GiveUsFeedbackMenuItem,
 	ImportFileActionItem,
+	ImportPdfActionItem,
 	LegalSummaryMenuItem,
 	UserManualMenuItem,
 	UIThemeSubmenu,
@@ -184,6 +185,7 @@ function TlaEditorTopLeftPanelAnonymous() {
 						<TldrawUiMenuGroup id="basic">
 							<EditSubmenu />
 							<TlaViewSubmenu />
+							<ImportPdfActionItem />
 							<ExportFileContentSubMenu />
 							<ExtrasGroup />
 							<TldrawUiMenuActionItem actionId={'save-file-copy'} />
@@ -302,6 +304,7 @@ function TlaEditorTopLeftPanelSignedIn() {
 								onRenameAction={handleRenameAction}
 								workspaceId={null}
 							/>
+							<ImportPdfActionItem />
 							<ImportFileActionItem />
 						</TldrawUiMenuSubmenu>
 					)}

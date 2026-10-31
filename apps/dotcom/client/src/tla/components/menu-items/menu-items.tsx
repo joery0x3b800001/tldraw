@@ -36,6 +36,7 @@ import {
 	TLDRAW_OFFLINE_FILE_EXTENSION,
 	useRejectTldrawOfflineFiles,
 } from '../../utils/tldrawOfflineFiles'
+import { ImportPdfDialog } from '../dialogs/ImportPdfDialog'
 import { SubmitFeedbackDialog } from '../dialogs/SubmitFeedbackDialog'
 import { TlaManageCookiesDialog } from '../dialogs/TlaManageCookiesDialog'
 
@@ -45,6 +46,7 @@ const messages = defineMessages({
 	accountMenu: { defaultMessage: 'User settings' },
 	signOut: { defaultMessage: 'Sign out' },
 	importFile: { defaultMessage: 'Import file…' },
+	importPdf: { defaultMessage: 'Import PDF pages…' },
 	// account menu
 	getHelp: { defaultMessage: 'User manual' },
 	legalSummary: { defaultMessage: 'Legal summary' },
@@ -356,6 +358,26 @@ export function ImportFileActionItem() {
 					// user cancelled
 					return
 				}
+			}}
+		/>
+	)
+}
+
+export function ImportPdfActionItem() {
+	const msg = useTranslation()
+	const editor = useMaybeEditor()
+	const { addDialog } = useDialogs()
+
+	return (
+		<TldrawUiMenuItem
+			id="import-pdf"
+			label={msg(messages.importPdf)}
+			onSelect={() => {
+				if (!editor) return
+				addDialog({
+					component: ({ onClose }) => <ImportPdfDialog editor={editor} onClose={onClose} />,
+					preventBackgroundClose: true,
+				})
 			}}
 		/>
 	)
